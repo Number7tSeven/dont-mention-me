@@ -1,15 +1,16 @@
 import discord
 from discord.ext import commands
+import random
 
 __version__ = '0.0.0'
 
 
-def get_prefix(bot, message):
+def get_prefix(discord_bot, message):
     """A callable prefix."""
 
     prefixes = ['!test ']
 
-    return commands.when_mentioned_or(*prefixes)(bot, message)
+    return commands.when_mentioned_or(*prefixes)(discord_bot, message)
 
 
 description = ("a template Discord bot to be used with the rewrite version of "
@@ -26,13 +27,6 @@ if __name__ == '__main__':
         except (discord.ClientException, ModuleNotFoundError):
             print(f'Couldn\'t load cog {cog}')
 
-    # for extension in [f.replace('.py', '') for f in listdir(cogs_dir) if isfile(join(cogs_dir, f))]:
-    #     try:
-    #         bot.load_extension(cogs_dir + "." + extension)
-    #     except (discord.ClientException, ModuleNotFoundError):
-    #         print(f'Failed to load extension {extension}.')
-    #         traceback.print_exc()
-
 
 @bot.event
 async def on_ready():
@@ -46,34 +40,39 @@ async def on_ready():
 @bot.event
 async def on_message(message):
     if bot.user.mentioned_in(message) and message.mention_everyone is False:
-        response = ('What the fuck did you just fucking say about me, you little '
-                    + 'bitch? I’ll have you know I graduated top of my class in '
-                    + 'the Navy Seals, and I’ve been involved in numerous secret '
-                    + 'raids on Al-Quaeda, and I have over 300 confirmed kills. I '
-                    + 'am trained in gorilla warfare and I’m the top sniper in '
-                    + 'the entire US armed forces. You are nothing to me but just '
-                    + 'another target. I will wipe you the fuck out with '
-                    + 'precision the likes of which has never been seen before on '
-                    + 'this Earth, mark my fucking words. You think you can get '
-                    + 'away with saying that shit to me over the Internet? Think '
-                    + 'again, fucker. As we speak I am contacting my secret '
-                    + 'network of spies across the USA and your IP is being '
-                    + 'traced right now so you better prepare for the storm, '
-                    + 'maggot. The storm that wipes out the pathetic little thing '
-                    + 'you call your life. You’re fucking dead, kid. I can be '
-                    + 'anywhere, anytime, and I can kill you in over seven '
-                    + 'hundred ways, and that’s just with my bare hands. Not only '
-                    + 'am I extensively trained in unarmed combat, but I have '
-                    + 'access to the entire arsenal of the United States Marine '
-                    + 'Corps and I will use it to its full extent to wipe your '
-                    + 'miserable ass off the face of the continent, you little '
-                    + 'shit. If only you could have known what unholy retribution '
-                    + 'your little “clever” comment was about to bring down upon '
-                    + 'you, maybe you would have held your fucking tongue. But '
-                    + 'you couldn’t, you didn’t, and now you’re paying the price, '
-                    + 'you goddamn idiot. I will shit fury all over you and you '
-                    + 'will drown in it. You’re fucking dead, kiddo.')
-        await message.channel.send(response)
+        responses = ('What the fuck did you just fucking say about me, you little '
+                     + 'bitch? I’ll have you know I graduated top of my class in '
+                     + 'the Navy Seals, and I’ve been involved in numerous secret '
+                     + 'raids on Al-Quaeda, and I have over 300 confirmed kills. I '
+                     + 'am trained in gorilla warfare and I’m the top sniper in '
+                     + 'the entire US armed forces. You are nothing to me but just '
+                     + 'another target. I will wipe you the fuck out with '
+                     + 'precision the likes of which has never been seen before on '
+                     + 'this Earth, mark my fucking words. You think you can get '
+                     + 'away with saying that shit to me over the Internet? Think '
+                     + 'again, fucker. As we speak I am contacting my secret '
+                     + 'network of spies across the USA and your IP is being '
+                     + 'traced right now so you better prepare for the storm, '
+                     + 'maggot. The storm that wipes out the pathetic little thing '
+                     + 'you call your life. You’re fucking dead, kid. I can be '
+                     + 'anywhere, anytime, and I can kill you in over seven '
+                     + 'hundred ways, and that’s just with my bare hands. Not only '
+                     + 'am I extensively trained in unarmed combat, but I have '
+                     + 'access to the entire arsenal of the United States Marine '
+                     + 'Corps and I will use it to its full extent to wipe your '
+                     + 'miserable ass off the face of the continent, you little '
+                     + 'shit. If only you could have known what unholy retribution '
+                     + 'your little “clever” comment was about to bring down upon '
+                     + 'you, maybe you would have held your fucking tongue. But '
+                     + 'you couldn’t, you didn’t, and now you’re paying the price, '
+                     + 'you goddamn idiot. I will shit fury all over you and you '
+                     + 'will drown in it. You’re fucking dead, kiddo.',
+                     "Can you even read?",
+                     "Dude. Stop.",
+                     "Haha. Real funny. :angry:",
+                     "Go away!",
+                     ":rage:")
+        await message.channel.send(random.choice(responses))
 
     if bot.user.mentioned_in(message) and message.mention_everyone is True:
         await message.channel.send('https://youtu.be/D1VqrwEyL5k')
