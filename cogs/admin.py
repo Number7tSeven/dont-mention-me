@@ -2,6 +2,7 @@ import sys
 import discord
 from discord.ext import commands
 
+
 class admin:
     def __init__(self, bot):
         self.bot = bot
@@ -143,6 +144,7 @@ class admin:
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
         else:
             await ctx.send('**`SUCCESS`**')
+
 
 def setup(bot):
     bot.add_cog(admin(bot))

@@ -8,7 +8,8 @@ __version__ = '0.0.0'
 def get_prefix(discord_bot, message):
     """A callable prefix."""
 
-    prefixes = ['!test ']
+    prefixes = ['!Don\'t Mention Me ', '!don\'t mention me ', '!Don\'t Mention ', '!don\'t mention ', "!Mention ",
+                "!mention "]
 
     return commands.when_mentioned_or(*prefixes)(discord_bot, message)
 
@@ -18,7 +19,7 @@ description = ("a template Discord bot to be used with the rewrite version of "
 
 bot = commands.Bot(command_prefix=get_prefix, description=description)
 
-cogs = ['rng', 'math', 'mod', 'joke']
+cogs = ['rng', 'math', 'mod', 'joke', 'admin']
 
 if __name__ == '__main__':
     for cog in cogs:

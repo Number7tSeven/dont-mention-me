@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 
+
 class mod:
     def __init__(self, bot):
         self.bot = bot
@@ -49,6 +50,7 @@ class mod:
             await ctx.send(f'Roll **{rank.name}** was removed from **{member.name}**')
         else:
             await ctx.send('No user specified!')
+
 
 def setup(bot):
     bot.add_cog(mod(bot))
