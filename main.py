@@ -5,7 +5,7 @@ import random
 __version__ = '0.0.0'
 
 
-def get_prefix():
+def get_prefix(bot, message):
     """A callable prefix."""
 
     prefixes = ['!Don\'t Mention Me ', '!don\'t mention me ', '!Don\'t Mention ', '!don\'t mention ', "!Mention ",
