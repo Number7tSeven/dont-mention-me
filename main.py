@@ -5,13 +5,13 @@ import random
 __version__ = '0.0.0'
 
 
-def get_prefix(discord_bot, message):
+def get_prefix():
     """A callable prefix."""
 
     prefixes = ['!Don\'t Mention Me ', '!don\'t mention me ', '!Don\'t Mention ', '!don\'t mention ', "!Mention ",
                 "!mention "]
 
-    return commands.when_mentioned_or(*prefixes)(discord_bot, message)
+    return prefixes
 
 
 description = ("a template Discord bot to be used with the rewrite version of "
