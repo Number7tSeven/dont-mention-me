@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import random
 
-__version__ = '0.0.0'
+__version__ = '1.0.0'
 
 
 def get_prefix(bot, message):
@@ -80,6 +80,10 @@ async def on_message(message):
 
     await bot.process_commands(message)
 
+
+@bot.command(aliases=['hello!', 'Hello', 'Hello!', 'Hi', 'hi', 'Hi!', 'hi!', 'wave', 'ohaiyo', 'ohaiyo!'])
+async def hello(ctx):
+    await ctx.send('Hi! :grin:')
 
 with open('key.txt') as keyfile:
     key = keyfile.read()
