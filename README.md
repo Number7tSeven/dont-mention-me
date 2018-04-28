@@ -1,5 +1,7 @@
 *NOTE: Much of this code was taken from [Der-Eddy's discord bot](https://github.com/Der-Eddy/discord_bot) and modified. You should check it out.*
 
+![picture](https://raw.githubusercontent.com/Number7tSeven/dont-mention-me/master/pic/strike%401.png)
+
 # Don't Mention Me
 A simple Discord bot that responds negatively to being mentioned.
 
