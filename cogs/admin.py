@@ -32,62 +32,6 @@ class admin:
         await ctx.send(f'Changed bot status to: **{discordStatus}**')
 
     @commands.command(hidden=True)
-    @commands.has_permissions(kick_members = True)
-    @commands.bot_has_permissions(kick_members = True)
-    async def kick(self, ctx, member: discord.Member = None, *reason):
-        '''Kicks a member with a reason (MOD ONLY)
-        Example:
-        -----------
-        :kick @user#000
-        '''
-        if member is not None:
-            if reason:
-                reason = ' '.join(reason)
-            else:
-                reason = None
-            await member.kick(reason=reason)
-        else:
-            await ctx.send('No user specified!')
-
-    @commands.command(hidden=True)
-    @commands.has_permissions(ban_members = True)
-    @commands.bot_has_permissions(ban_members = True)
-    async def ban(self, ctx, member: discord.Member=None, *reason):
-        '''Bans a member with a reason (MOD ONLY)
-        Example:
-        -----------
-        :ban @user#0000
-        '''
-        if member is not None:
-            if reason:
-                reason = ' '.join(reason)
-            else:
-                reason = None
-            await member.ban(reason=reason)
-        else:
-            await ctx.send('No user specified!')
-
-    @commands.command(hidden=True)
-    @commands.has_permissions(ban_members = True)
-    @commands.bot_has_permissions(ban_members = True)
-    async def unban(self, ctx, user: int=None, *reason):
-        '''Unbans a member with a reason (MOD ONLY)
-         The user ID must be specified, name + discriminator is not enough
-        Example:
-        -----------
-        :unban 102815825781596160
-        '''
-        user = discord.User(id=user)
-        if user is not None:
-            if reason:
-                reason = ' '.join(reason)
-            else:
-                reason = None
-            await ctx.guild.unban(user, reason=reason)
-        else:
-            await ctx.send('No user specified!')
-
-    @commands.command(hidden=True)
     @commands.is_owner()
     async def echo(self, ctx, channel: str, *message: str):
         '''Returns a message as a bot on a particular channel (BOT OWNER ONLY)'''
