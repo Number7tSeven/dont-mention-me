@@ -84,6 +84,7 @@ async def on_message(message):
 
 @bot.command(aliases=['hello!', 'Hello', 'Hello!', 'Hi', 'hi', 'Hi!', 'hi!', 'wave', 'ohaiyo', 'ohaiyo!'])
 async def hello(ctx):
+    """Hi!"""
     await ctx.send('Hi! :grin:')
 
 with open('key.txt') as keyfile:
