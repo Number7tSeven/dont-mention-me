@@ -14,8 +14,9 @@ def get_prefix(bot, message):
     return prefixes
 
 
-description = ("a template Discord bot to be used with the rewrite version of "
-               + "discord.py")
+description = ("Please don't mention me. To invoke a command use a prefix "
+               + "(!Don't Mention Me, !Don't Mention, !Mention) followed by "
+               + "one of the commands from the categories below.")
 
 bot = commands.Bot(command_prefix=get_prefix, description=description)
 
