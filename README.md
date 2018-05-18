@@ -51,3 +51,6 @@ echo | Echos a message in another channel
 cog_load | Loads a cog.
 cog_unload | Unloads a cog.
 cog_reload | Unloads and then reloads a cog.
+
+## Setup
+For this bot to run a key.txt file needs to be created in the main directory that only contains the bot token that you intend to use.
