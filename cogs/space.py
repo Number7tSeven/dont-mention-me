@@ -19,7 +19,9 @@ class space:
         lat = loc_data['iss_position']['latitude']
         long = loc_data['iss_position']['longitude']
 
-        mapquest_key = "sample text" # TODO: Create another key file.
+        # mapquest_key = "sample text" # TODO: Create another key file.
+        with open("map_quest_key.txt") as mapfile:
+            mapquest_key = mapfile.read()
 
         map_string = ("https://www.mapquestapi.com/geocoding/v1/reverse?key={}"
                       + "&location={}%2C{}&outFormat=json" + "&thumbMaps=false"
