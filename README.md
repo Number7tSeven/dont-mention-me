@@ -53,4 +53,4 @@ cog_unload | Unloads a cog.
 cog_reload | Unloads and then reloads a cog.
 
 ## Setup
-For this bot to run a key.txt file needs to be created in the main directory that only contains the bot token that you intend to use.
+For this bot to run a `key.txt` file needs to be created in the main directory that only contains the bot token that you intend to use. Also a `map_quest_key.txt` file will need to be set up for the space cog to use the iss command.

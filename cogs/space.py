@@ -9,6 +9,7 @@ class space:
     
     @commands.command()
     async def iss(self, ctx):
+        """Responds with the location of the ISS."""
 
         loc_response = requests.get("http://api.open-notify.org/iss-now.json")
         loc_data = loc_response.json()
@@ -19,13 +20,12 @@ class space:
         lat = loc_data['iss_position']['latitude']
         long = loc_data['iss_position']['longitude']
 
-        # mapquest_key = "sample text" # TODO: Create another key file.
         with open("map_quest_key.txt") as mapfile:
             mapquest_key = mapfile.read()
 
         map_string = ("https://www.mapquestapi.com/geocoding/v1/reverse?key={}"
                       + "&location={}%2C{}&outFormat=json" + "&thumbMaps=false"
-                     ).format(mapquest_key, str(lat), str(long))
+                      ).format(mapquest_key, str(lat), str(long))
         map_response = requests.get(map_string)
         map_data = map_response.json()
 
@@ -36,10 +36,11 @@ class space:
         loc = nat_dict[map_data["results"][0]["locations"][0]["adminArea1"]]
 
         await ctx.send("The current location of the International Space Station"
-                       + "is (%s, %s), which is above %s." %(lat, long, loc))
+                       + " is `%s°N %s°W`, which is above `%s`." % (lat, long, loc))
 
     @commands.command()
     async def astronauts(self, ctx):
+        """Responds with the number of astronauts in space."""
 
         astro_response = requests.get("http://api.open-notify.org/astros.json")
         astro_data = astro_response.json()
@@ -61,6 +62,7 @@ class space:
         
         await ctx.send("There are %s astronauts currently in space." % astro_num 
                        + "\n" + astro_string % tuple(astro_list))
+
 
 def setup(bot):
     bot.add_cog(space(bot))
