@@ -12,8 +12,7 @@ class admin:
     async def shutdown(self, ctx):
         '''Shuts the bot down :( (BOT OWNER ONLY)'''
         await ctx.send('Shuting down. :sleeping:')
-        self.bot.logout()
-        sys.exit(0)
+        await self.bot.logout()
 
     @commands.command(hidden=True)
     @commands.is_owner()
