@@ -1,39 +1,40 @@
-import sys
 import discord
 from discord.ext import commands
+from discord.errors import ClientException
 
 
-class admin:
+class Admin:
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command(hidden=True)
     @commands.is_owner()
     async def shutdown(self, ctx):
-        '''Shuts the bot down :( (BOT OWNER ONLY)'''
+        """Shuts the bot down :( (BOT OWNER ONLY)"""
         await ctx.send('Shuting down. :sleeping:')
         await self.bot.logout()
 
     @commands.command(hidden=True)
     @commands.is_owner()
     async def changestatus(self, ctx, status: str):
-        '''Changes the online status of the Bot (BOT OWNER ONLY)'''
+        """Changes the online status of the Bot (BOT OWNER ONLY)"""
         status = status.lower()
         if status == 'offline' or status == 'off' or status == 'invisible':
-            discordStatus = discord.Status.invisible
+            discord_status = discord.Status.invisible
         elif status == 'idle':
-            discordStatus = discord.Status.idle
+            discord_status = discord.Status.idle
         elif status == 'dnd' or status == 'disturb':
-            discordStatus = discord.Status.dnd
+            discord_status = discord.Status.dnd
         else:
-            discordStatus = discord.Status.online
-        await self.bot.change_presence(status=discordStatus)
-        await ctx.send(f'Changed bot status to: **{discordStatus}**')
+            discord_status = discord.Status.online
+        await self.bot.change_presence(status=discord_status)
+        await ctx.send(f'Changed bot status to: **{discord_status}**')
 
     @commands.command(hidden=True)
     @commands.is_owner()
     async def echo(self, ctx, channel: str, *message: str):
-        '''Returns a message as a bot on a particular channel (BOT OWNER ONLY)'''
+        """Returns a message as a bot on a particular channel (BOT OWNER ONLY)
+        """
         ch = self.bot.get_channel(int(channel))
         msg = ' '.join(message)
         await ch.send(msg)
@@ -56,7 +57,9 @@ class admin:
 
         try:
             self.bot.load_extension(cog)
-        except Exception as e:
+        except ImportError as e:
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+        except ClientException as e:
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
         else:
             await ctx.send('**`SUCCESS`**')
@@ -69,7 +72,9 @@ class admin:
 
         try:
             self.bot.unload_extension(cog)
-        except Exception as e:
+        except ImportError as e:
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+        except ClientException as e:
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
         else:
             await ctx.send('**`SUCCESS`**')
@@ -83,11 +88,13 @@ class admin:
         try:
             self.bot.unload_extension(cog)
             self.bot.load_extension(cog)
-        except Exception as e:
+        except ImportError as e:
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+        except ClientException as e:
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
         else:
             await ctx.send('**`SUCCESS`**')
 
 
 def setup(bot):
-    bot.add_cog(admin(bot))
+    bot.add_cog(Admin(bot))

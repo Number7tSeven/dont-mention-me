@@ -3,7 +3,7 @@ import requests
 from discord.ext import commands
 
 
-class space:
+class Space:
     def __init__(self, bot):
         self.bot = bot
     
@@ -36,7 +36,8 @@ class space:
         loc = nat_dict[map_data["results"][0]["locations"][0]["adminArea1"]]
 
         await ctx.send("The current location of the International Space Station"
-                       + " is `%s°N %s°W`, which is above `%s`." % (lat, long, loc))
+                       + " is `%s°N %s°W`, which is above `%s`." % (lat, long,
+                                                                    loc))
 
     @commands.command()
     async def astronauts(self, ctx):
@@ -59,10 +60,13 @@ class space:
 
         elif astro_num == 0:
             astro_string = "There are no astronauts in space. %s"
-        
+
+        else:
+            astro_string = "Something broke. %s"
+
         await ctx.send("There are %s astronauts currently in space." % astro_num 
                        + "\n" + astro_string % tuple(astro_list))
 
 
 def setup(bot):
-    bot.add_cog(space(bot))
+    bot.add_cog(Space(bot))
