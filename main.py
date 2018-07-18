@@ -82,8 +82,8 @@ async def on_message(message):
         await message.channel.send(random.choice(responses))
 
     if bot.user.mentioned_in(message) and message.mention_everyone is True:
-        await message.channel.send('https://youtu.be/D1VqrwEyL5k')
-
+        # await message.channel.send('https://youtu.be/D1VqrwEyL5k')
+        await message.add_reaction('💢')
     await bot.process_commands(message)
 
 
