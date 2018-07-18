@@ -21,7 +21,7 @@ description = ("Please don't mention me. To invoke a command use a prefix "
 
 bot = commands.Bot(command_prefix=get_prefix, description=description)
 
-cogs = ['Admin', 'mod', 'rng', 'math', 'Joke', 'space']
+cogs = ['Admin', 'Mod', 'RNG', 'Math', 'Joke', 'Space']
 
 if __name__ == '__main__':
     for cog in cogs:
