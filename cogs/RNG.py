@@ -10,7 +10,7 @@ class RNG:
     async def roll(self, ctx, dice: str):
         """Rolls a dice in NdN format."""
 
-        if dice == 'initiative' or 'Initiative':
+        if dice == 'initiative' or dice == 'Initiative':
             dice = '1d20'
 
         try:
