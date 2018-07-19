@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 import random
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 
 def get_prefix(bot, message):
